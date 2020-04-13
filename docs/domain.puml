@@ -1,0 +1,66 @@
+@startuml
+
+class Element {
+    private String id;
+    private String name;
+    private ElementType type;
+}
+
+class Method {
+    String id;
+    String elementId;
+    String name;
+    AccessLevel accessLevel;
+}
+
+class MethodArgument {
+    String id;
+    String methodId;
+    String name;
+    String type;
+}
+
+class Property {
+    String id;
+    String elementId;
+    String name;
+    String type;
+}
+
+class Relation {
+    RelationType type;
+    Element source;
+    Element target;
+}
+
+enum RelationType {
+    DEPENDS_ON,
+    EXTENDS,
+    AGGREGATE,
+    RELATED,
+    COMPOSITION;
+}
+
+enum ElementType {
+    CLASS,
+    INTERFACE;
+}
+
+enum AccessLevel {
+    PUBLIC,
+    PROTECTED,
+    PRIVATE;
+}
+
+Method *.. Element
+Property *.. Element
+MethodArgument *.. Method
+Relation *.. Element
+
+AccessLevel o.. Method
+AccessLevel o.. Property
+
+RelationType o.. Relation
+ElementType o.. Element
+
+@enduml

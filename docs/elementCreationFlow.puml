@@ -1,0 +1,23 @@
+@startuml
+
+(Create element) as (Element)
+(Create relation) as (Relation)
+(Create property) as (Property)
+(Create method) as (Method)
+(Create method argument) as (Argument)
+
+User --> (Element)
+(Element) --> (Property)
+(Element) --> (Method)
+
+(Property) --> (Relation)
+(Method) --> (Relation)
+(Method) --> (Argument)
+(Argument) ---> (Relation)
+
+note right of (Relation) :  Relation creating automatically\nwhen create property and method
+note right of (Property) :  Create type and relation\nSet name
+note left of (Method) :  Create return type and relation\nCreate method argument\nSet name
+note left of (Argument) :  Create return type and relation\nSet name
+
+@enduml
